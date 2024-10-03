@@ -28,7 +28,7 @@ public class CellSimulation {
             Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
             for(Cell i : cells){
                 i.moveAround(canvasCenter);
-                i.grow(0.02);
+                handleCellInteraction();
                 
             }
            
@@ -54,6 +54,20 @@ public class CellSimulation {
             
     }
 
+    private void handleCellInteraction() {
+        for(int i = 0; i < cells.size(); i++){
+            Cell c1 = cells.get(i);
+            for(int j= i+1; j<cells.size(); j++){
+                Cell c2 = cells.get(j);
+                c1.interactWith(c2);
+            }
+        }
+        // for i from 0 up to max cell index
+            // get cell at index i
+            // for j from i+1 up to max cell index
+                // get cell at index j
+                // make the two cells interact
+    }
     
 
     
